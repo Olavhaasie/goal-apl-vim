@@ -1,7 +1,9 @@
 " Vim syntax file
 " Language: GOAL agent programming
 " Maintainer: Olav de Haas
-" Latest Revision: 29 april 2017
+" Created: 29 april 2017
+" Latest Change: 1 may 2017
+" Files: .mod2g, .mas2g, .act2g, .test2g
 
 if exists("b:current_syntax")
     finish
@@ -82,6 +84,8 @@ hi def link goalComment             Comment
 hi def link goalCommentKeywords     Todo
 hi def link goalString              String
 
+
+syntax sync minlines=20 maxlines=50
 
 " the syntax is called goal :)
 let b:current_syntax="goal"
