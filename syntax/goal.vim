@@ -13,28 +13,31 @@ endif
 " GOAL Keywords
 """""""""""""""""
 syntax keyword goalStatementKeywords    pre in post
-syntax keyword goalStatementKeywords    contained forall do if then
+syntax keyword goalStatementKeywords    launchpolicy module
+syntax keyword goalStatementKeywords    contained forall do if then when type launch
 syntax keyword goalBaseKeywords         contained percept bel goal a-goal goal-a not
 syntax keyword goalActionKeywords       contained adopt drop insert delete
 syntax keyword goalActionKeywords       contained send sent allother all someother some
+syntax keyword goalActionKeywords       contained subscribe unsubscribe
+syntax keyword goalTestKeywords         contained eventually leadsto never always until done
 syntax keyword goalBoolean              containedin=goalBraceBlock true false
-syntax keyword goalPreProcKeywords      order exit focus test define use as with
-syntax keyword goalPreProcKeywords      actionspec knowledge goals module mas
+syntax keyword goalPreProcKeywords      order exit focus test timeout define use as with
+syntax keyword goalPreProcKeywords      actionspec knowledge goals mas
 syntax keyword goalPreProcKeywords      never nogoals select
 syntax keyword goalPreProcKeywords      linear linearrandom linearall linearallrandom random randomall
 
-syntax keyword goalCommentKeywords      contained TODO FIXME NOTE
+syntax keyword goalCommentKeywords      contained TODO FIXME NOTE NB
 
 " Some Prolog keywords
 syntax keyword goalPrologPredicates     contained member findall bagof setof count length
-syntax keyword goalPrologPredicates     contained select nth0 append permutation
+syntax keyword goalPrologPredicates     contained select nth0 append permutation aggregate_all
 
 
 
 """""""""""""""""
 " GOAL Matchings
 """""""""""""""""
-syntax match goalComment "\v\%.*$" containedin=goalBraceBlock contains=commentKeywords
+syntax match goalComment "\v\%.*$" containedin=goalBraceBlock contains=goalCommentKeywords
 
 " GOAL Operators
 syntax match goalOperator "\v\+" containedin=goalBraceBlock
@@ -66,7 +69,7 @@ syntax match goalAnonymousVariable "\v<_>" contained
 syntax region goalString start='\v"' skip="\v\\." end='\v"'
 syntax region goalString start="\v'" skip="\v\\." end="\v'"
 
-syntax region goalBraceBlock start="{" end="}" contains=goalStatementKeywords,goalBaseKeywords,goalActionKeywords,goalPrologPredicates, goalVariable,goalAnonymousVariable,goalPrologPredicates
+syntax region goalBraceBlock start="{" end="}" fold contains=goalStatementKeywords,goalBaseKeywords,goalActionKeywords,goalPrologPredicates, goalVariable,goalAnonymousVariable,goalPrologPredicates,goalTestKeywords
 
 """""""""""""""""
 " Higlighting
@@ -74,6 +77,8 @@ syntax region goalBraceBlock start="{" end="}" contains=goalStatementKeywords,go
 hi def link goalStatementKeywords   Statement
 hi def link goalBaseKeywords        Statement
 hi def link goalActionKeywords      Statement
+hi def link goalTestKeywords        Statement
+hi def link goalPrologPredicates    Function
 hi def link goalBoolean             Constant
 hi def link goalPreProcKeywords     PreProc
 hi def link goalOperator            Operator
