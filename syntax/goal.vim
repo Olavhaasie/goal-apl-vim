@@ -62,6 +62,10 @@ syntax match goalVariable "\v<[A-Z][a-zA-Z0-9]*>" contained
 syntax match goalAnonymousVariable "\v<_>" contained
 
 
+"""""""""""""""""
+" GOAL Clusters
+"""""""""""""""""
+syntax cluster goalModuleContent contains=goalStatementKeywords,goalBaseKeywords,goalActionKeywords,goalPrologPredicates,goalVariable,goalAnonymousVariable,goalPrologPredicates,goalTestKeywords
 
 """""""""""""""""
 " GOAL Regions
@@ -69,7 +73,7 @@ syntax match goalAnonymousVariable "\v<_>" contained
 syntax region goalString start='\v"' skip="\v\\." end='\v"'
 syntax region goalString start="\v'" skip="\v\\." end="\v'"
 
-syntax region goalBraceBlock start="{" end="}" fold contains=goalStatementKeywords,goalBaseKeywords,goalActionKeywords,goalPrologPredicates, goalVariable,goalAnonymousVariable,goalPrologPredicates,goalTestKeywords
+syntax region goalBraceBlock start="{" end="}" fold transparent contains=@goalModuleContent
 
 """""""""""""""""
 " Higlighting
