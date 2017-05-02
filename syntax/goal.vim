@@ -60,14 +60,18 @@ syntax match goalNumber "\v\d" containedin=goalBraceBlock
 syntax match goalNumber "\v[+-]\d" containedin=goalBraceBlock
 
 " variables
-syntax match goalVariable "\v<[A-Z][a-zA-Z0-9]*>" contained
-syntax match goalAnonymousVariable "\v<_>" contained
+syntax match goalVariable "\v<(_|\u)\w*>" contained
+
+" Errornous characters
+syntax match goalErrorChar "\v[@`]"
+syntax region goalErrorTerm start="\v<(_|\u)\w*>\(" end=")"
 
 
 """""""""""""""""
 " GOAL Clusters
 """""""""""""""""
-syntax cluster goalModuleContent contains=goalStatementKeywords,goalBaseKeywords,goalActionKeywords,goalPrologPredicates,goalVariable,goalAnonymousVariable,goalPrologPredicates,goalTestKeywords
+syntax cluster goalModuleContent contains=goalStatementKeywords,goalBaseKeywords,goalActionKeywords,goalPrologPredicates,goalVariable,goalPrologPredicates,goalTestKeywords,goalErrorVariable,goalErrorTerm
+
 
 """""""""""""""""
 " GOAL Regions
@@ -76,6 +80,7 @@ syntax region goalString start='\v"' skip="\v\\." end='\v"'
 syntax region goalString start="\v'" skip="\v\\." end="\v'"
 
 syntax region goalBraceBlock start="{" end="}" fold transparent contains=@goalModuleContent
+
 
 """""""""""""""""
 " Higlighting
@@ -90,10 +95,11 @@ hi def link goalPreProcKeywords     PreProc
 hi def link goalOperator            Operator
 hi def link goalNumber              Number
 hi def link goalVariable            Identifier
-hi def link goalAnonymousVariable   Constant
 hi def link goalComment             Comment
 hi def link goalCommentKeywords     Todo
 hi def link goalString              String
+hi def link goalErrorChar           Error
+hi def link goalErrorTerm           Error
 
 
 syntax sync minlines=20 maxlines=50
