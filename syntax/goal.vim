@@ -15,7 +15,7 @@ endif
 syntax keyword goalStatementKeywords    pre in post
 syntax keyword goalStatementKeywords    launchpolicy module
 syntax keyword goalStatementKeywords    contained forall do if then when type launch
-syntax keyword goalBaseKeywords         contained percept bel goal a-goal goal-a not
+syntax keyword goalBaseKeywords         contained percept bel goal not
 syntax keyword goalActionKeywords       contained adopt drop insert delete
 syntax keyword goalActionKeywords       contained send sent allother all someother some
 syntax keyword goalActionKeywords       contained subscribe unsubscribe
@@ -37,6 +37,8 @@ syntax keyword goalPrologPredicates     contained select nth0 append permutation
 """""""""""""""""
 " GOAL Matchings
 """""""""""""""""
+syntax match goalBaseKeywords "a-goal" contained
+syntax match goalBaseKeywords "goal-a" contained
 syntax match goalComment "\v\%.*$" containedin=goalBraceBlock contains=goalCommentKeywords
 
 " GOAL Operators
@@ -82,12 +84,12 @@ hi def link goalStatementKeywords   Statement
 hi def link goalBaseKeywords        Statement
 hi def link goalActionKeywords      Statement
 hi def link goalTestKeywords        Statement
-hi def link goalPrologPredicates    Function
+hi def link goalPrologPredicates    Keyword
 hi def link goalBoolean             Constant
 hi def link goalPreProcKeywords     PreProc
 hi def link goalOperator            Operator
 hi def link goalNumber              Number
-hi def link goalVariable            Type
+hi def link goalVariable            Identifier
 hi def link goalAnonymousVariable   Constant
 hi def link goalComment             Comment
 hi def link goalCommentKeywords     Todo
