@@ -76,8 +76,8 @@ syntax cluster goalModuleContent contains=goalStatementKeywords,goalBaseKeywords
 """""""""""""""""
 " GOAL Regions
 """""""""""""""""
-syntax region goalString start='\v"' skip="\v\\." end='\v"'
-syntax region goalString start="\v'" skip="\v\\." end="\v'"
+syntax region goalString start='\v"' skip="\v\\." end='\v"' containedin=goalBraceBlock
+syntax region goalString start="\v'" skip="\v\\." end="\v'" containedin=goalBraceBlock
 
 syntax region goalBraceBlock start="{" end="}" fold transparent contains=@goalModuleContent
 
