@@ -102,7 +102,7 @@ hi def link goalErrorChar           Error
 hi def link goalErrorTerm           Error
 
 
-syntax sync minlines=20 maxlines=50
+syntax sync fromstart
 
 " the syntax is called goal :)
 let b:current_syntax="goal"
