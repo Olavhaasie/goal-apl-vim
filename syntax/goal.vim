@@ -37,9 +37,14 @@ syntax keyword goalPrologPredicates     contained select nth0 append permutation
 """""""""""""""""
 " GOAL Matchings
 """""""""""""""""
+" structures
 syntax match goalModuleStructure "\vmodule \w* \{"he=s+7,me=e-1
+
+" special goal terms
 syntax match goalBaseKeywords "a-goal" contained
 syntax match goalBaseKeywords "goal-a" contained
+
+" comments
 syntax match goalComment "\v\%.*$" containedin=goalBraceBlock contains=goalCommentKeywords
 
 " GOAL Operators
