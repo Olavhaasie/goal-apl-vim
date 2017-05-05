@@ -13,7 +13,7 @@ endif
 " GOAL Keywords
 """""""""""""""""
 syntax keyword goalStatementKeywords    pre in post
-syntax keyword goalStatementKeywords    launchpolicy module
+syntax keyword goalStatementKeywords    launchpolicy
 syntax keyword goalStatementKeywords    contained forall do if then when type launch
 syntax keyword goalBaseKeywords         contained percept bel goal not
 syntax keyword goalActionKeywords       contained adopt drop insert delete
@@ -37,6 +37,7 @@ syntax keyword goalPrologPredicates     contained select nth0 append permutation
 """""""""""""""""
 " GOAL Matchings
 """""""""""""""""
+syntax match goalModuleStructure "\vmodule \w* \{"he=s+7,me=e-1
 syntax match goalBaseKeywords "a-goal" contained
 syntax match goalBaseKeywords "goal-a" contained
 syntax match goalComment "\v\%.*$" containedin=goalBraceBlock contains=goalCommentKeywords
@@ -63,7 +64,7 @@ syntax match goalNumber "\v[+-]\d" containedin=goalBraceBlock
 syntax match goalVariable "\v<(_|\u)\w*>" contained
 
 " Errornous characters
-syntax match goalErrorChar "\v[@`]"
+syntax match goalMissingVariable "\v, *(\)|,)" containedin=goalBraceBlock
 syntax region goalErrorTerm start="\v<(_|\u)\w*>\(" end=")"
 
 
@@ -90,6 +91,7 @@ hi def link goalBaseKeywords        Statement
 hi def link goalActionKeywords      Statement
 hi def link goalTestKeywords        Statement
 hi def link goalPrologPredicates    Keyword
+hi def link goalModuleStructure     Structure
 hi def link goalBoolean             Constant
 hi def link goalPreProcKeywords     PreProc
 hi def link goalOperator            Operator
@@ -98,7 +100,7 @@ hi def link goalVariable            Identifier
 hi def link goalComment             Comment
 hi def link goalCommentKeywords     Todo
 hi def link goalString              String
-hi def link goalErrorChar           Error
+hi def link goalMissingVariable     Error
 hi def link goalErrorTerm           Error
 
 

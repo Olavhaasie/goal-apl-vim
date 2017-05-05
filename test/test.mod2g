@@ -1,0 +1,31 @@
+use testBelief as knowledge.
+use testGoals as goals.
+
+exit=nogoals.
+order=linearrandom.
+timeout=6969.
+
+define getBeef as beef(_).
+
+module main {
+    forall percept(test(I,J)), not(bel(test(V,W))) do
+        insert(test(I,J)) + delete(bel(test(V,W))).
+
+    % NOTE: of course this syntax also supports comments
+    if a-goal(foo(X)), bel(member(X,L)) then
+        drop(nothing).
+
+    % TODO: change term name
+    if Wrong(CapitalTerm), not(fda, ) then stop.
+}
+
+
+define move with {
+    pre { something(X,_) }
+    post { true }
+
+define stupid as agent {
+    if true then launch foo.
+
+    when type launch bar.
+}
